@@ -111,6 +111,7 @@ Finally, we save the extracted JSON into a file called output.json.
 
 
 **How I Can Improve This Project with NLP / LLM**
+
 So right now, my code reads the Aadhaar card using OCR, does some preprocessing, and then I use regex to pick out the name, father’s name, DOB, gender, and Aadhaar number. It works, but it’s not perfect. Here’s how I can make it smarter with NLP or LLM:
 1. Fix OCR Mistakes Automatically
 2. Better Name and Father Name Extraction

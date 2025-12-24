@@ -1,0 +1,2 @@
+pip install pytesseract opencv-python pillow pdf2image numpy
+brew install tesseract-lang     # For additional language support, e.g., Hindi for macOS
