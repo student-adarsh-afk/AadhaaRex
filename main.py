@@ -12,35 +12,24 @@ image = cv2.imread(image_path)
 
 # i am doing two passes with different preprocessing techniques to get better results
 # First pass: convert to grayscale
-
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-gray = cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
-gray = cv2.GaussianBlur(gray, (5,5), 0)
 
+# Preprocess for first pass
+gray = cv2.resize(gray_image, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
+gray = cv2.GaussianBlur(gray, (5,5), 0)
 
 # reading both hindi and english 
 text = pytesseract.image_to_string(gray,lang='eng+hin')
-# print(text)
 
-
-# fiest pass is not rading the name properly so i am doing second pass
+# first pass is not reading the name properly so i am doing second pass
 # for getting the name of the person i am re reading the image with thresholding
 _, binary_image = cv2.threshold(gray_image, 150, 255, cv2.THRESH_BINARY)
 for_name = pytesseract.image_to_string(binary_image,lang='eng+hin')
-# print(for_name)
-
-
-
-
-
-
 
 # Save the extracted text to a file 
 with open('output/raw.txt', 'w') as text_file:
     text_file.write(text)
 print("Text extraction complete. Check output/raw.txt for the result.")
-
 
 
 
